@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 // import { useProducts } from "../context/ProductContext";
 
 import Card from "../components/Card";
 import styles from "./ProductsPage.module.css";
 import Loader from "../components/Loader";
-import { FaListUl } from "react-icons/fa";
+import { fetchProducts } from "../features/product/productSlice";
+
 import {
   createQueryObject,
   filterProducts,
@@ -17,11 +19,19 @@ import SideBar from "../components/SideBar";
 
 function ProductsPage() {
   // const products = useProducts();
-  const products = [];
+  const dispatch = useDispatch();
+  const {products} = useSelector((store) => store.product)
+  console.log(products)
+
+
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState({});
   const [displayed, setDisplayed] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
 
   useEffect(() => {
     setDisplayed(products);
@@ -47,8 +57,8 @@ function ProductsPage() {
             <Card key={p.id} data={p} />
           ))}
         </div>
-        
-      <SideBar query={query} setQuery={setQuery} />
+
+        <SideBar query={query} setQuery={setQuery} />
       </div>
     </>
   );
