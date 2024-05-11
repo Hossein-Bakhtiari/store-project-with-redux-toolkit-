@@ -8,8 +8,8 @@ import ProductProvider from "./context/ProductContext";
 import CartProvider from "./context/CartContext";
 function App() {
   return (
-    <CartProvider>
-      <ProductProvider>
+ //   <CartProvider>
+   //   <ProductProvider>
         <Layout>
           <Routes>
             <Route path="/" element={<Navigate to="/products" replace />} />
@@ -19,8 +19,8 @@ function App() {
             <Route path="/*" element={<NotFoundPage />} />
           </Routes>
         </Layout>
-      </ProductProvider>
-    </CartProvider>
+     // </ProductProvider>
+   // </CartProvider>
   );
 }
 

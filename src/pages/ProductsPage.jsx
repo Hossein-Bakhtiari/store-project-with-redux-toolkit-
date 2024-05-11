@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useProducts } from "../context/ProductContext";
+// import { useProducts } from "../context/ProductContext";
 
 import Card from "../components/Card";
 import styles from "./ProductsPage.module.css";
@@ -16,7 +16,8 @@ import SearchBox from "../components/SearchBox";
 import SideBar from "../components/SideBar";
 
 function ProductsPage() {
-  const products = useProducts();
+  // const products = useProducts();
+  const products = [];
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState({});
   const [displayed, setDisplayed] = useState([]);
@@ -32,7 +33,7 @@ function ProductsPage() {
     setSearch(search.query || "");
     let finalProducts = searchProducts(products, query.search);
     finalProducts = filterProducts(finalProducts, query.category);
-    console.log(query);
+    // console.log(query);
     setDisplayed(finalProducts);
   }, [query]);
 
