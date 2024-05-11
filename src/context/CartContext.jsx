@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useReducer } from "react";
-import { sumProduct } from "../helpers/helper";
+// import { sumProduct } from "../helpers/helper";
 
 const initialState = {
   selectedItems: [],
